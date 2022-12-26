@@ -15,6 +15,9 @@ const RWDSlideshow = ({
   dot,
   customContainerStyle = {},
   containerClassName = '',
+  slideViewerClassName = '',
+  slideTrayClassName ='',
+  slideWrapperClassName = '',
   slideClassName = '',
   arrowContainerClassName = '',
   arrowWrapperClassName = '',
@@ -160,12 +163,12 @@ const RWDSlideshow = ({
         <div
           ref={slideViewerRef}
           style={styles.RwdSlideViewer}
-          className='rwd-slide-viewer'
+          className={`rwd-slide-viewer ${slideViewerClassName}`}
           onScroll={handleScroll}
         >
-          <div className='rwd-slide-tray' style={styles.RwdSlideTray}>
+          <div className={`rwd-slide-tray ${slideTrayClassName}`} style={styles.RwdSlideTray}>
             {slideSetList.map((slideSet, index) => (
-              <div className='rwd-slide-wrapper' style={styles.RwdSlideWrapper} key={index}>
+              <div className={`rwd-slide-wrapper ${slideWrapperClassName}`} style={styles.RwdSlideWrapper} key={index}>
                 {slideSet}
               </div>
             ))}

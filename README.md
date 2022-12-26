@@ -22,11 +22,11 @@ $ npm install react-rwd-slideshow --save
 
 ## Use it
 
-Import the `Slideshow` component from `react-grid-carousel` and put your component/image/html/etc inside `Slideshow.Item`
+Import the `Slideshow` component from `react-grid-slideshow` and put your component/image/html/etc inside `Slideshow.Item`
 
 ```javascript
 import React from 'react';
-import Slideshow from 'react-grid-carousel';
+import Slideshow from 'react-grid-slideshow';
 
 const Gallery = () => {
   const randomImageUrl = 'https://picsum.photos/800/600?random=';
@@ -70,13 +70,16 @@ const Gallery = () => {
 | arrowLeft               | Element  |                         | Custom left arrow                                      |
 | arrowRight              | Element  |                         | Custom right arrow                                     |
 | dot                     | Element  |                         | Custom dot component with prop `isActive`              |
-| customContainerStyle    | Object   |                         | Style object for carousel container                    |
+| customContainerStyle    | Object   |                         | Style object for slideshow container                   |
+| slideViewerClassName    | String   |                         | Classname for the slide viewer                         |
+| slideTrayClassName      | String   |                         | Classname for the slide tray                           |
+| slideWrapperClassName   | String   |                         | Classname for the slide wrapper                        |
 | slideClassName          | String   |                         | Classname for the slide                                |
 | arrowContainerClassName | String   |                         | Classname for the arrow container                      |
 | arrowWrapperClassName   | String   |                         | Classname for the arrow wrapper                        |
 | arrowClassName          | String   |                         | Classname for the arrow                                |
 | dotWrapperClassName     | String   |                         | Classname for the dot wrapper                          |
-| dotClassName            | String   |                         | Classname for the                                      |
+| dotClassName            | String   |                         | Classname for the dot selector                         |
 | onCurrentSlideChanged   | Function |                         | Function to get the current Slide                      |
 
 ### Custom dot
