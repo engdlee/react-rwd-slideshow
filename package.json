@@ -43,7 +43,7 @@
     "eslint-plugin-react": "^7.31.11",
     "prettier": "^2.8.1"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "React RWD Slideshow, no dependencies",
   "main": "index.js",
   "repository": {
     "type": "git",
