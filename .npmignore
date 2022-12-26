@@ -1,7 +1,12 @@
-## the src folder
+## dev
 src
 .babelrc
 rollup.config.js
+.eslintrc.json
+.prettierrc
+public
+.vscode
+build
 ## node modules folder
 node_modules
 ## git repository related files
