@@ -13,8 +13,8 @@ const RWDSlideshow = ({
   arrowLeft,
   arrowRight,
   dot,
-  containerClassName = '',
   customContainerStyle = {},
+  containerClassName = '',
   slideClassName = '',
   arrowContainerClassName = '',
   arrowWrapperClassName = '',
@@ -54,7 +54,7 @@ const RWDSlideshow = ({
       overscrollBehaviorInline: 'contain',
       transition: 'left 0.5s cubic-bezier(0.2, 1, 0.3, 1) 0s',
     },
-    SlideSet: {
+    RwdSlideWrapper: {
       scrollSnapAlign: scrollSnap ? 'start' : '',
       scrollSnapStop: scrollSnap ? 'always' : '',
     },
@@ -164,9 +164,9 @@ const RWDSlideshow = ({
           onScroll={handleScroll}
         >
           <div className='rwd-slide-tray' style={styles.RwdSlideTray}>
-            {slideSetList.map((set, index) => (
-              <div style={styles.SlideSet} key={index}>
-                {set}
+            {slideSetList.map((slideSet, index) => (
+              <div className='rwd-slide-wrapper' style={styles.RwdSlideWrapper} key={index}>
+                {slideSet}
               </div>
             ))}
           </div>
