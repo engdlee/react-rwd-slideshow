@@ -22,11 +22,11 @@ $ npm install react-rwd-slideshow --save
 
 ## Use it
 
-Import the `Carousel` component from `react-grid-carousel` and put your component/image/html/etc inside `Carousel.Item`
+Import the `Slideshow` component from `react-grid-carousel` and put your component/image/html/etc inside `Slideshow.Item`
 
 ```javascript
 import React from 'react';
-import Carousel from 'react-grid-carousel';
+import Slideshow from 'react-grid-carousel';
 
 const Gallery = () => {
   const randomImageUrl = 'https://picsum.photos/800/600?random=';
@@ -41,17 +41,17 @@ const Gallery = () => {
   };
   return (
     <div style={wrapperStyle}>
-      <Carousel gap={100} scrollSnap showDots>
-        <Carousel.Item>
+      <Slideshow gap={100} scrollSnap showDots>
+        <Slideshow.Item>
           <img width='100%' src='https://picsum.photos/800/600?random=1' />
-        </Carousel.Item>
+        </Slideshow.Item>
 
         {[...Array(5)].map((_, index) => (
-          <Carousel.Item key={index}>
+          <Slideshow.Item key={index}>
             <img src={`${randomImageUrl}${index}`} style={imgStyle} />
-          </Carousel.Item>
+          </Slideshow.Item>
         ))}
-      </Carousel>
+      </Slideshow>
     </div>
   );
 };
@@ -92,5 +92,5 @@ const customDot = ({ isActive }) => (
   />
 )
 
-<Carousel dot={customDot} />
+<Slideshow dot={customDot} />
 ```
