@@ -22,7 +22,7 @@ $ npm install react-rwd-slideshow --save
 
 ## Use it
 
-Just import the `Carousel` component from `react-grid-carousel` and put your item into `Carousel.Item`
+Import the `Carousel` component from `react-grid-carousel` and put your component/image/html/etc inside `Carousel.Item`
 
 ```javascript
 import React from 'react';
@@ -79,7 +79,7 @@ const Gallery = () => {
 | dotClassName            | String   |                         | Classname for the                                      |
 | onCurrentSlideChanged   | Function |                         | Function to get the current Slide                      |
 
-### dot
+### Custom dot
 
 ```javascript
 const customDot = ({ isActive }) => (
