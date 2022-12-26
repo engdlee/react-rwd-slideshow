@@ -69,7 +69,7 @@ const Gallery = () => {
 | dotColorInactive        | String   | rgb(255 255 255 / 44%)  | Valid css color value for inactive dot                 |
 | arrowLeft               | Element  |                         | Custom left arrow                                      |
 | arrowRight              | Element  |                         | Custom right arrow                                     |
-| [dot](#dot)             | Element  |                         | Custom dot component with prop `isActive`              |
+| dot                     | Element  |                         | Custom dot component with prop `isActive`              |
 | customContainerStyle    | Object   |                         | Style object for carousel container                    |
 | slideClassName          | String   |                         | Classname for the slide                                |
 | arrowContainerClassName | String   |                         | Classname for the arrow container                      |
