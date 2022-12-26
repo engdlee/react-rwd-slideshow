@@ -1,16 +1,12 @@
 {
   "name": "react-rwd-slideshow",
   "version": "1.0.2",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "rollup -c",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json,scss} --config ./.prettierrc"
@@ -34,25 +30,35 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@rollup/plugin-babel": "^6.0.3",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.11",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.1",
+    "rollup": "^2.79.1"
   },
   "description": "React RWD Slideshow, no dependencies",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/engdlee/react-rwd-slideshow.git"
   },
   "keywords": [
     "slideshow",
+    "react-slideshow",
+    "react-component",
     "RWD",
+    "carousel",
+    "gallery",
+    "slider",
     "responsive",
     "mobile",
     "tablet",
     "desktop",
-    "carousel",
     "touch"
   ],
   "author": "David Lee",
