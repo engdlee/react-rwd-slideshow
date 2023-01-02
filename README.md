@@ -22,11 +22,11 @@ $ npm install react-rwd-slideshow --save
 
 ## Use it
 
-Import the `Slideshow` component from `react-grid-slideshow` and put your component/image/html/etc inside `Slideshow.Item`
+Import the `Slideshow` component from `react-rwd-slideshow` and put your component/image/html/etc inside `Slideshow.Item`
 
 ```javascript
 import React from 'react';
-import Slideshow from 'react-grid-slideshow';
+import Slideshow from 'react-rwd-slideshow';
 
 const Gallery = () => {
   const randomImageUrl = 'https://picsum.photos/800/600?random=';
