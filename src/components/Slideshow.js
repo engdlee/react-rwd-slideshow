@@ -128,12 +128,14 @@ const RWDSlideshow = ({
   const scrollLeftRef = useRef(0);
 
   const handleScroll = (e) => {
-    const scrollLeft = e.currentTarget.scrollLeft;
-    const offsetWidth = e.currentTarget.offsetWidth;
-    if (scrollLeft !== scrollLeftRef.current) {
-      scrollLeftRef.current = scrollLeft;
-      if (scrollLeftRef.current % (offsetWidth + gap) === 0) {
-        onCurrentSlideChanged && onCurrentSlideChanged(scrollLeftRef.current / (offsetWidth + gap));
+    if (onCurrentSlideChanged) {
+      const scrollLeft = e.currentTarget.scrollLeft;
+      const offsetWidth = e.currentTarget.offsetWidth;
+      if (scrollLeft !== scrollLeftRef.current) {
+        scrollLeftRef.current = scrollLeft;
+        if (scrollLeftRef.current % (offsetWidth + gap) === 0) {
+          onCurrentSlideChanged(scrollLeftRef.current / (offsetWidth + gap));
+        }
       }
     }
   };
