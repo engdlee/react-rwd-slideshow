@@ -30,6 +30,7 @@ const RWDSlideshow = ({
   children,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [dotClicked, setDotClicked] = useState(false);
   const [gap, setGap] = useState(0);
   const slideViewerRef = useRef(null);
 
@@ -77,6 +78,7 @@ const RWDSlideshow = ({
   };
 
   useEffect(() => {
+    onCurrentSlideChanged && onCurrentSlideChanged(currentSlide);
     slideViewerRef.current.scrollLeft = (slideViewerRef.current.offsetWidth + gap) * currentSlide;
   }, [currentSlide]);
 
@@ -122,23 +124,25 @@ const RWDSlideshow = ({
   }, [numberOfSlides]);
 
   const goToSlide = useCallback((slideNumber) => {
+    setDotClicked(true);
     setCurrentSlide(slideNumber);
   }, []);
 
   const scrollLeftRef = useRef(0);
 
   const handleScroll = (e) => {
-    if (onCurrentSlideChanged) {
-      const scrollLeft = e.currentTarget.scrollLeft;
-      const offsetWidth = e.currentTarget.offsetWidth;
-      if (scrollLeft !== scrollLeftRef.current) {
-        scrollLeftRef.current = scrollLeft;
-        if (scrollLeftRef.current % (offsetWidth + gap) === 0) {
-          onCurrentSlideChanged(scrollLeftRef.current / (offsetWidth + gap));
-        }
+    const scrollLeft = e.currentTarget.scrollLeft;
+    const offsetWidth = e.currentTarget.offsetWidth;
+    if (scrollLeft !== scrollLeftRef.current) {
+      scrollLeftRef.current = scrollLeft;
+      if (!dotClicked && scrollLeftRef.current % (offsetWidth + gap) === 0) {
+        setCurrentSlide(scrollLeftRef.current / (offsetWidth + gap));
       }
     }
   };
+  const handleTouch = useCallback(() => {
+    setDotClicked(false);
+  }, [])
 
   return (
     <>
@@ -170,7 +174,10 @@ const RWDSlideshow = ({
         >
           <div className={`rwd-slide-tray ${slideTrayClassName}`} style={styles.RwdSlideTray}>
             {slideSetList.map((slideSet, index) => (
-              <div className={`rwd-slide-wrapper ${slideWrapperClassName}`} style={styles.RwdSlideWrapper} key={index}>
+              <div
+                onTouchStart={handleTouch}
+                onTouchEnd={handleTouch}
+                className={`rwd-slide-wrapper ${slideWrapperClassName}`} style={styles.RwdSlideWrapper} key={index}>
                 {slideSet}
               </div>
             ))}
