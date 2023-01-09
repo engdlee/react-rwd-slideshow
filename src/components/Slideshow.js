@@ -16,11 +16,13 @@ const RWDSlideshow = ({
   customContainerStyle = {},
   containerClassName = '',
   slideViewerClassName = '',
-  slideTrayClassName ='',
+  slideTrayClassName = '',
   slideWrapperClassName = '',
   slideClassName = '',
   arrowContainerClassName = '',
   arrowWrapperClassName = '',
+  arrowWrapperPrevClassName = '',
+  arrowWrapperNextClassName = '',
   arrowClassName = '',
   dotWrapperClassName = '',
   dotClassName = '',
@@ -75,7 +77,6 @@ const RWDSlideshow = ({
   };
 
   useEffect(() => {
-    onCurrentSlideChanged && onCurrentSlideChanged(currentSlide);
     slideViewerRef.current.scrollLeft = (slideViewerRef.current.offsetWidth + gap) * currentSlide;
   }, [currentSlide]);
 
@@ -129,11 +130,10 @@ const RWDSlideshow = ({
   const handleScroll = (e) => {
     const scrollLeft = e.currentTarget.scrollLeft;
     const offsetWidth = e.currentTarget.offsetWidth;
-
     if (scrollLeft !== scrollLeftRef.current) {
       scrollLeftRef.current = scrollLeft;
       if (scrollLeftRef.current % (offsetWidth + gap) === 0) {
-        setCurrentSlide(scrollLeftRef.current / (offsetWidth + gap));
+        onCurrentSlideChanged && onCurrentSlideChanged(scrollLeftRef.current / (offsetWidth + gap));
       }
     }
   };
@@ -156,7 +156,7 @@ const RWDSlideshow = ({
           hidden={hideArrows || currentSlide <= 0}
           CustomArrow={arrowLeft}
           arrowContainerClassName={`rwd-prev-slide ${arrowContainerClassName}`}
-          arrowWrapperClassName={arrowWrapperClassName}
+          arrowWrapperClassName={`${arrowWrapperClassName} ${arrowWrapperPrevClassName}`}
           arrowClassName={arrowClassName}
           onClick={handlePrev}
         />
@@ -196,7 +196,7 @@ const RWDSlideshow = ({
           hidden={hideArrows || currentSlide === numberOfSlides - 1}
           CustomArrow={arrowRight}
           arrowContainerClassName={`rwd-next-slide ${arrowContainerClassName}`}
-          arrowWrapperClassName={arrowWrapperClassName}
+          arrowWrapperClassName={`${arrowWrapperClassName} ${arrowWrapperNextClassName}`}
           arrowClassName={arrowClassName}
           onClick={handleNext}
         />
