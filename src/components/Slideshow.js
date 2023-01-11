@@ -112,12 +112,14 @@ const RWDSlideshow = ({
   }, [gapProp]);
 
   const handlePrev = useCallback(() => {
+    setDotClicked(true);
     setCurrentSlide((slideNumber) => {
       return slideNumber - 1;
     });
   }, [numberOfSlides]);
 
   const handleNext = useCallback(() => {
+    setDotClicked(true);
     setCurrentSlide((slideNumber) => {
       return slideNumber + 1;
     });
