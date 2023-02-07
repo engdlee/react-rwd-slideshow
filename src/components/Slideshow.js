@@ -4,7 +4,7 @@ import Dot from './controls/Dot';
 
 const RWD_SLIDESHOW_SLIDE = 'RWD_SLIDESHOW_SLIDE';
 const RWDSlideshow = ({
-  gap: gapProp = 0,
+  gap = 0,
   scrollSnap = true,
   hideArrows = false,
   showDots = false,
@@ -31,7 +31,6 @@ const RWDSlideshow = ({
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [dotClicked, setDotClicked] = useState(false);
-  const [gap, setGap] = useState(0);
   const slideViewerRef = useRef(null);
 
   // Styles
@@ -80,7 +79,7 @@ const RWDSlideshow = ({
   useEffect(() => {
     onCurrentSlideChanged && onCurrentSlideChanged(currentSlide);
     slideViewerRef.current.scrollLeft = (slideViewerRef.current.offsetWidth + gap) * currentSlide;
-  }, [currentSlide]);
+  }, [currentSlide, gap, onCurrentSlideChanged]);
 
   const slideList = useMemo(
     () =>
@@ -103,27 +102,26 @@ const RWDSlideshow = ({
         );
       }),
 
-    [slideList, scrollSnap],
+    [slideList, slideClassName, styles.RwdSlide],
   );
 
   useEffect(() => {
-    setGap(gapProp);
     setCurrentSlide(0);
-  }, [gapProp]);
+  }, []);
 
   const handlePrev = useCallback(() => {
     setDotClicked(true);
     setCurrentSlide((slideNumber) => {
       return slideNumber - 1;
     });
-  }, [numberOfSlides]);
+  }, []);
 
   const handleNext = useCallback(() => {
     setDotClicked(true);
     setCurrentSlide((slideNumber) => {
       return slideNumber + 1;
     });
-  }, [numberOfSlides]);
+  }, []);
 
   const goToSlide = useCallback((slideNumber) => {
     setDotClicked(true);
@@ -133,8 +131,9 @@ const RWDSlideshow = ({
   const scrollLeftRef = useRef(0);
 
   const handleScroll = (e) => {
-    const scrollLeft = e.currentTarget.scrollLeft;
+    const scrollLeft = Math.round(e.currentTarget.scrollLeft);
     const offsetWidth = e.currentTarget.offsetWidth;
+
     if (scrollLeft !== scrollLeftRef.current) {
       scrollLeftRef.current = scrollLeft;
       if (!dotClicked && scrollLeftRef.current % (offsetWidth + gap) === 0) {
