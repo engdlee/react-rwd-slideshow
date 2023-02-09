@@ -78,7 +78,9 @@ const RWDSlideshow = ({
 
   useEffect(() => {
     onCurrentSlideChanged && onCurrentSlideChanged(currentSlide);
-    slideViewerRef.current.scrollLeft = (slideViewerRef.current.offsetWidth + gap) * currentSlide;
+    if (dotClicked) {
+      slideViewerRef.current.scrollLeft = (slideViewerRef.current.offsetWidth + gap) * currentSlide;
+    }
   }, [currentSlide, gap, onCurrentSlideChanged]);
 
   const slideList = useMemo(
@@ -136,8 +138,8 @@ const RWDSlideshow = ({
 
     if (scrollLeft !== scrollLeftRef.current) {
       scrollLeftRef.current = scrollLeft;
-      if (!dotClicked && scrollLeftRef.current % (offsetWidth + gap) === 0) {
-        setCurrentSlide(scrollLeftRef.current / (offsetWidth + gap));
+      if (!dotClicked) {
+        setCurrentSlide(Math.round(scrollLeftRef.current / (offsetWidth + gap)));
       }
     }
   };
